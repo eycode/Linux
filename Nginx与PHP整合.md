@@ -142,7 +142,7 @@
 
  
 
-####step4：php优化与配置(注意：以下操作在/usr/local/php5/目录下)
+#### step4：php优化与配置(注意：以下操作在/usr/local/php5/目录下)
 	cd /usr/local/php5/
 	cp /usr/src/php-5.3.10/php.ini-production  lib/php.ini
 	cp etc/php-fpm.conf.default etc/php-fpm.conf
@@ -164,14 +164,14 @@
 
  
 
-####一些参数介绍：
+#### 一些参数介绍：
 
 	pm.max_children：子进程最大数
 	pm.min_spare_servers：启动时的进程数
 	pm.max_spare_servers：保证空闲进程数最小值，如果空闲进程小于此值，则创建新的子进程
 	pm.max_requests：保证空闲进程数最大值，如果空闲进程大于此值，此进行清理
 
-####step5：启动php和停止php服务
+#### step5：启动php和停止php服务
 	ln -sf /usr/local/php5/sbin/php-fpm /usr/bin/
 	php-fpm   #启动php进程
  
@@ -179,21 +179,21 @@
 
  
 
-####停止php
+#### 停止php
 
 	pkill php-fpm
  
 
  
 
-##小技巧：
+## 小技巧：
 
-####如果安装网站时提示不支持某些扩展怎么办？例如不支持mysqli扩展
+#### 如果安装网站时提示不支持某些扩展怎么办？例如不支持mysqli扩展
 
-####解决：重编译php，增加扩展模块即可
+#### 解决：重编译php，增加扩展模块即可
 
 
-####step1：生成新编译文件 (注意：在php解压目录下操作编译/usr/src/php-5.3.10/)
+#### step1：生成新编译文件 (注意：在php解压目录下操作编译/usr/src/php-5.3.10/)
 
 	cd /usr/src/php-5.3.10/ext/mysqli/
  
@@ -214,7 +214,7 @@
 
  
 
-####一些参数介绍：
+#### 一些参数介绍：
 
 	prefix：指定模块的安装路径，注意的是编译安装的PHP中在根目录下是没有ext目录，而模块默认存放目录是在/usr/local/php5/include/php/ext/下
 	
@@ -222,7 +222,7 @@
 	
 	with-mysqli：指定Mysql安装配置信息
 
-####step2：修改php.ini文件
+#### step2：修改php.ini文件
 
 	vim lib/php.ini
 	extension=mysqli.so
@@ -230,25 +230,25 @@
 
 >注意：在php.ini目录直接启用mysqli扩展就行了，而不需要指定mysqli的安装目录，因为在编译时已经把mysqli模块生成到默认的模块存放目录了
 
-####step3：重启php
+#### step3：重启php
 	pkill php-fpm ; php-fpm
  
 
 >即可重新加载模块
 
-######这个是php添加扩展模块的方法，以后需要添加新模块都可以通过这个方法解决。
+###### 这个是php添加扩展模块的方法，以后需要添加新模块都可以通过这个方法解决。
 
  
 
-##安装Zend篇
-####step1：下载软件
+## 安装Zend篇
+#### step1：下载软件
 
 	wget http://liquidtelecom.dl.sourceforge.net/project/wdcp/wdcp_soft/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz
  
 
 >注意：如果需要其他版本 eycode带你跳转
 
-####step2：配置zend
+#### step2：配置zend
 	tar xf ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz
 	cd ZendGuardLoader-php-5.3-linux-glibc23-x86_64/php-5.3.x/
 	mkdir /usr/local/php5/include/php/ext/zend
@@ -266,13 +266,13 @@
 
  
 
-####一些参数介绍：
+#### 一些参数介绍：
 
 	zend_extension：模块存储目录
 	
 	zend_loader.enable：启用加载
 
-####step3：重载php
+#### step3：重载php
 
 	pkill php-fpm ; php-fpm
 
@@ -280,29 +280,29 @@
 
  
 
-##安装pcre篇
-####step1：下载pcre
+## 安装pcre篇
+#### step1：下载pcre
 
 	wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.7.tar.gz
  
 
 >注意：pcre库是安装nginx的必须环境
 
-####step2：编译安装
+#### step2：编译安装
 
 	tar zxvf pcre-7.7.tar.gz -C /usr/src/pcre-7.7
 	./configure
 	make && make install
  
 
-##安装Nginx篇
-####step1：下载nginx
+## 安装Nginx篇
+#### step1：下载nginx
 
 	wget  http://nginx.org/download/nginx-1.9.9.tar.gz
  
 >注意：1.9.9版本是最新的版本，需要的 eycode带你跳转
 
-####step2：安装nginx
+#### step2：安装nginx
 
 	tar xf nginx-1.9.9.tar.gz -C /usr/src/
 	cd /usr/src/nginx-1.9.9
@@ -315,7 +315,7 @@
 >注意：nginx虽然使用很少的编译参数，但自带的默认参数满足使用
 
 
-####一下参数介绍：
+#### 一下参数介绍：
 
 	prefix：指定nginx安装目录
 	
@@ -325,7 +325,7 @@
 
  
 
-####step3：配置nginx.conf文件
+#### step3：配置nginx.conf文件
 
 	vim /usr/local/nginx/conf/nginx.conf
 	user www;
@@ -347,7 +347,7 @@
 	}
  
 
-####一些参数介绍：
+#### 一些参数介绍：
 
 	user：运行用户，建议以php的一致，方便管理
 	
@@ -361,7 +361,7 @@
 
 >注意：其他参数在本文中不介绍，因为nginx实在太多东西要学了，文章有限。nginx在后面会有相关专题介绍
 
-####step4：启动nginx和停止nginx
+#### step4：启动nginx和停止nginx
 **启动nginx**
 	cd /usr/local/nginx/
 	./sbin/nginx
@@ -405,7 +405,7 @@
 保存
 
 
-####启动nginx服务
+#### 启动nginx服务
 
 	service nginxd start
  
@@ -416,22 +416,22 @@
 	No such file or directory
  
 
-####解决方案：
+#### 解决方案：
 
 	ln -s /usr/local/lib/libpcre.so.1 /lib64
  
 
-####重载nginx配置
+#### 重载nginx配置
 
 	service nginxd reload
  
 
-####重启nginx服务
+#### 重启nginx服务
 
 	service nginxd restart
  
 
-####停止nginx服务
+#### 停止nginx服务
 
 	service nginxd stop
  
