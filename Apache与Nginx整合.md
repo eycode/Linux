@@ -4,7 +4,7 @@
 
 ## 预安装环境篇
 
-####step1：更新yum
+#### step1：更新yum
 	[root@ZWN2K-5001 ~]# yum clean all
 	[root@ZWN2K-5001 ~]# yum makecache
 
@@ -12,7 +12,7 @@
 
  
 
-####step2：安装编译环境
+#### step2：安装编译环境
 	[root@ZWN2K-5001 ~]# yum -y install gcc gcc-c++ \
 	libxml2 libxml2-devel \
 	zlib-devel \
@@ -22,15 +22,15 @@
 
  
 
-##安装Apache篇
+## 安装Apache篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://archive.apache.org/dist/httpd/httpd-2.2.12.tar.gz
 >注意：如果需要其他版本  点击eycode跳转
 
  
 
-####step2：编译安装
+#### step2：编译安装
 	[root@ZWN2K-5001 ~]# tar xf httpd-2.2.12.tar.gz -C /usr/src/
 	[root@ZWN2K-5001 ~]# cd /usr/src/httpd-2.2.12/
 	[root@ZWN2K-5001 httpd-2.2.12]#
@@ -45,7 +45,7 @@
 
  
 
-###一些参数
+### 一些参数
 
 	prefix：安装路径
 	
@@ -63,7 +63,7 @@
 
  
 
-####step3：优化路径
+#### step3：优化路径
 	[root@ZWN2K-5001 httpd-2.2.12]# ln -sf /usr/local/http/bin/* /usr/local/bin/
 	[root@ZWN2K-5001 httpd-2.2.12]# httpd -v
 	Server version: Apache/2.2.12 (Unix)
@@ -85,7 +85,7 @@
 
  
 
-####一些参数：
+#### 一些参数：
 
 	chkconfig:35 85 15                     	：服务识别参数，级别 3， 5 中启动
 	description: It is httpd server  		：服务的描述信息 (自定义内容)
@@ -94,14 +94,14 @@
 
  
 
-##安装libmcrypt篇
+## 安装libmcrypt篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://nchc.dl.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz
 
  
 
-####step2：编译安装
+#### step2：编译安装
 	[root@ZWN2K-5001 ~]# tar xf libmcrypt-2.5.8.tar.gz -C /usr/src/
 	[root@ZWN2K-5001 ~]# cd /usr/src/libmcrypt-2.5.8/
 	[root@ZWN2K-5001 libmcrypt-2.5.8]# ./configure && make && make install
@@ -109,14 +109,14 @@
 
  
 
-##安装mhash篇
+## 安装mhash篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://nchc.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz
 
  
 
-####step2：编译安装
+#### step2：编译安装
 	[root@ZWN2K-5001 mhash-0.9.9.9]# tar xf mhash-0.9.9.9.tar.gz -C /usr/src/
 	[root@ZWN2K-5001 mhash-0.9.9.9]# cd /usr/src/mhash-0.9.9.9/
 	[root@ZWN2K-5001 mhash-0.9.9.9]# ./configure && make && make install
@@ -124,14 +124,14 @@
 
  
 
-##安装mcrypt篇
+## 安装mcrypt篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://nchc.dl.sourceforge.net/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz
 
  
 
-####step2：编译安装
+#### step2：编译安装
 	[root@ZWN2K-5001 ~]# tar xf mcrypt-2.6.8.tar.gz -C /usr/src/
 	[root@ZWN2K-5001 ~]# cd /usr/src/mcrypt-2.6.8/
 	[root@ZWN2K-5001 mcrypt-2.6.8]# LD_LIBRARY_PATH=/usr/local/lib ./configure && make && make install
@@ -141,14 +141,14 @@
 
  
 
-##安装libiconv篇
+## 安装libiconv篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.9.2.tar.gz
 
  
 
-####step2：编译安装
+#### step2：编译安装
 	[root@ZWN2K-5001 ~]# tar xf libiconv-1.9.2.tar.gz -C /usr/src/
 	[root@ZWN2K-5001 ~]# cd /usr/src/libiconv-1.9.2/
 	[root@ZWN2K-5001 libiconv-1.9.2]# ./configure --prefix=/usr/local/libiconv
@@ -158,12 +158,12 @@
 
 ##安装PHP篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://museum.php.net/php5/php-5.3.10.tar.gz
 
  
 
-####step2：编译安装
+#### step2：编译安装
 
  
 	[root@ZWN2K-5296 ~]# tar xf php-5.3.10.tar.gz -C /usr/src/
@@ -192,7 +192,7 @@
 
  
 
-####step3：生成配置文件
+#### step3：生成配置文件
 	[root@ZWN2K-5001 php-5.3.10]# cp php.ini-production /usr/local/php/php.ini
 
  
@@ -201,14 +201,14 @@
 
  
 
-##安装Zend篇
+## 安装Zend篇
 
-#####step1：下载软件
+##### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget http://liquidtelecom.dl.sourceforge.net/project/wdcp/wdcp_soft/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz
 
  
 
-####step2：修改php配置文件
+#### step2：修改php配置文件
 	[root@ZWN2K-5001 ~]# mkdir /usr/local/php/include/php/ext/zend
 	[root@ZWN2K-5001 ~]# tar xf ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz -C /usr/src/
 	[root@ZWN2K-5001 ~]# cd /usr/src/ZendGuardLoader-php-5.3-linux-glibc23-x86_64/php-5.3.x/
@@ -223,9 +223,9 @@
 
  
 
-##配置apache主配置文件篇
+## 配置apache主配置文件篇
 
-####step1：修改配置文件
+#### step1：修改配置文件
 	[root@ZWN2K-5001 ~]# cd /usr/local/http/
 	[root@ZWN2K-5001 http]# vim conf/httpd.conf
 	Listen 127.0.0.1:80
@@ -244,7 +244,7 @@
 
  
 
-####step2：启动http服务
+#### step2：启动http服务
 	[root@ZWN2K-5001 http]# service httpd start
 	httpd (pid 11360) already running
 	[root@ZWN2K-5001 http]#
@@ -257,9 +257,9 @@
 
  
 
-##安装eAccelerator  PHP加速器篇
+## 安装eAccelerator  PHP加速器篇
 
-####step1：下载软件
+#### step1：下载软件
 	[root@ZWN2K-5001 ~]# wget https://github.com/eaccelerator/eaccelerator/tarball/master
 
  
@@ -268,7 +268,7 @@
 
  
 
-####step2：编译安装
+#### step2：编译安装
 	[root@ZWN2K-5001 ~]# tar xf master -C /usr/src/
 	[root@ZWN2K-5001 ~]# cd /usr/src/eaccelerator-eaccelerator-42067ac/
 	[root@ZWN2K-5001 eaccelerator-eaccelerator-42067ac]# /usr/local/php/bin/phpize
@@ -303,7 +303,7 @@
 
  
 
-####step3：修改php配置文件
+#### step3：修改php配置文件
 	[root@ZWN2K-5001 ~]# vim /usr/local/php/php.ini
 	[eaccelerator]
 	extension="/usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/eaccelerator.so"
@@ -322,7 +322,7 @@
 
  
 
-####一些参数：
+#### 一些参数：
 >
 1. extension：加载eaccelerator模块
 2. eaccelerator.shm_size：用来设置分配给eAccelerator用来缓存php的最大共享内存，单位是mb，如果设置为0，就使用默认大小。
@@ -343,9 +343,9 @@
 
  
 
-##配置Nginx篇
+## 配置Nginx篇
 
-####step1：修改nginx.conf文件
+#### step1：修改nginx.conf文件
 	server {
 	                listen       801;
 	                server_name  www.eycode.com eycode.com;
