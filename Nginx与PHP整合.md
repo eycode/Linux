@@ -1,6 +1,6 @@
 >**前提：Centos6. 64位纯净版系统，最好有安装了Mysql数据库，没有安装也没有所谓，只是基础篇。**
 
-##安装编译环境篇
+## 安装编译环境篇
 	yum clean all && \
 	        yum -y install gcc* \
 	        make autoconf libtool-ltdl-devel gd-devel \
@@ -13,35 +13,35 @@
 	        bison wget tar re2c
  
 
-##安装libiconv库篇
-####step1：下载软件
+## 安装libiconv库篇
+#### step1：下载软件
 
 	wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.9.2.tar.gz
 
 >注意：如果没有这个库，在编译php时会提示报错而停止编译安装，libiconv属于动态库
 
-####step2：编译安装
+#### step2：编译安装
 	tar xf libiconv-1.14.tar.gz -C /usr/src/
 	cd /usr/src/libiconv-1.9.2
 	./configure --prefix=/usr/local/libiconv
 	make && make install
  
 
-##安装PHP5.3篇
-####step1：设置运行用户
+## 安装PHP5.3篇
+#### step1：设置运行用户
 	useradd -M -s /sbin/nologin www
 
 >注意：创建一个不需要家目录，不需要登录系统的运行用户，它只能是支持php和nginx运行在Linux上，每一个用户的权限必须细分，否则后期很麻烦。
 
 
-####step2：下载php
+#### step2：下载php
 	wget http://museum.php.net/php5/php-5.3.10.tar.gz
  
 
 >注意：文章开始的下载时windows下载方式，而这个是linux下载方式，软件都是一样
  
 
-####step3：配置编译安装PHP
+#### step3：配置编译安装PHP
 	tar xf php-5.3.10.tar.gz -C /usr/src/
 	./configure \
 	 --prefix=/usr/local/php \
@@ -62,7 +62,7 @@
 	make && make install
  
 
-####一些参数介绍：
+#### 一些参数介绍：
 
 	prefix：php安装目录路径
 	
