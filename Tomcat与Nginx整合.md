@@ -4,14 +4,14 @@
 
  
 
-##编译环境篇
-####step1：更新yum
+## 编译环境篇
+#### step1：更新yum
 
 	[root@localhost ~]# yum clean all
 	[root@localhost ~]# yum makecache
  
 
-####step2：安装编译环境
+#### step2：安装编译环境
 
 	[root@localhost ~]# yum -y install gcc* gcc-c++* \
 	autoconf* automake* \
@@ -20,8 +20,8 @@
 	libtool*
  
 
-##安装Pcre库篇
-####step1：下载Pcre源码包
+## 安装Pcre库篇
+#### step1：下载Pcre源码包
 
 	[root@localhost ~]# wget http://nchc.dl.sourceforge.net/project/pcre/pcre/7.7/pcre-7.7.tar.gz
  
@@ -30,7 +30,7 @@
 
  
 
-####step2：编译安装
+#### step2：编译安装
 
 	[root@localhost ~]# tar xf pcre-7.7.tar.gz -C /usr/src/
 	[root@localhost ~]# cd /usr/src/pcre-7.7/
@@ -41,8 +41,8 @@
 
  
 
-##安装Nginx篇
-####step1：下载Nginx版本
+## 安装Nginx篇
+#### step1：下载Nginx版本
 
 	[root@localhost ~]# wget http://nginx.org/download/nginx-1.9.9.tar.gz
  
@@ -51,7 +51,7 @@
 
  
 
-####step2：安装Nginx
+#### step2：安装Nginx
 
 	[root@localhost ~]# tar xf nginx-1.9.9.tar.gz -C /usr/src/
 	[root@localhost ~]# cd /usr/src/nginx-1.9.9/
@@ -60,7 +60,7 @@
 	--with-http_gzip_static_module
 	[root@localhost nginx-1.9.9]# make && make install
 
-####step3：配置Nginx.conf文件 (注意：以下规则都是在http{}模块下编写或添加)
+#### step3：配置Nginx.conf文件 (注意：以下规则都是在http{}模块下编写或添加)
 
 	[root@localhost nginx]# useradd -M -s /sbin/nologin www
 	[root@localhost nginx-1.9.9]# cd /usr/local/nginx/
@@ -105,7 +105,7 @@
 	
 	}
 
-####一些参数：
+#### 一些参数：
 
 	user www; 									#指定运行用户
 	worker_processes 3; 						#进程数，建议与CPU核数一致
@@ -125,7 +125,7 @@
 
  
 
-####step4：创建虚拟主机
+#### step4：创建虚拟主机
 
 	[root@localhost nginx]# mkdir conf/vhost
 	[root@localhost nginx]# vim conf/vhost/test.conf
@@ -159,12 +159,12 @@
 		}
 	 
 
-####一些参数：
+#### 一些参数：
 
 	listen 80;                              			#监听80端口
 	server_name eycode.com www.eycode.com; 				#绑定域名
 	
-####由tomcat处理动态页面
+#### 由tomcat处理动态页面
 	index index.jsp;                                    #默认主页
 	proxy_pass http://127.0.0.1:8080;          			#不需要指定网站的根目录，凡是请求都给tomcat处理
 	proxy_redirect off;                                 #对发送给客户端的URL进行修改
@@ -179,7 +179,7 @@
 	proxy_buffers 6 32k;                                #proxy_buffers缓冲区，网页平均在32k以下的话
 	proxy_busy_buffers_size 64k;                		#高负荷下缓冲大小=proxy_buffers*2
 	proxy_temp_file_write_size 64k;          			#设定缓存文件夹大小，大于这个值,将从upstream服务器
-####由nginx处理静态页面
+#### 由nginx处理静态页面
 	location ~* \.(gif|jpg|png|bmp|swf)$ {   			#定义nginx应该处理哪些文件
 	root /web;                                          #指定网站根目录
 	expires 30d;                                        #保留时间
@@ -191,7 +191,7 @@
 
  
 
-####step5：启动Nginx服务
+#### step5：启动Nginx服务
 
 	[root@localhost nginx]# pkill nginx ; ./sbin/nginx
 	[root@localhost nginx]#
@@ -204,15 +204,15 @@
 
  
 
-##安装JDK环境篇
-####step1：下载新版的JDK
+## 安装JDK环境篇
+#### step1：下载新版的JDK
 
 	[root@localhost ~]# wget -O jdk-8u65-linux-x64.tar.gz http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.tar.gz?AuthParam=1451909486_9eaa773a548bf32f31b69a39945ae580
 >注意：上面下载不了，请 点击JDK下载
 
  
 
-####step2：配置java环境
+#### step2：配置java环境
 
 	[root@localhost ~]# tar xf jdk-8u45-linux-x64.tar.gz -C /usr/src/
 	[root@localhost ~]# mkdir /usr/local/jdk
@@ -234,8 +234,8 @@
 	[root@localhost ~]#
  
 
-##安装Tomcat篇
-####step1：下载tomcat
+## 安装Tomcat篇
+#### step1：下载tomcat
 
 	[root@localhost ~]# wget http://mirrors.cnnic.cn/apache/tomcat/tomcat-8/v8.0.30/bin/apache-tomcat-8.0.30.tar.gz
  
@@ -244,27 +244,27 @@
 
  
 
-####step2：创建启动和停止脚本
+#### step2：创建启动和停止脚本
 
 	[root@localhost ~]# mkdir /usr/local/tomcat
 	[root@localhost ~]# cp -ap /usr/src/apache-tomcat-8.0.30/* /usr/local/tomcat/
 	[root@localhost ~]# ln -sf /usr/local/tomcat/bin/startup.sh /usr/bin/tomcat-up
 	[root@localhost ~]# ln -sf /usr/local/tomcat/bin/shutdown.sh /usr/bin/tomcat-down
 
-####step3：修改配置文件
+#### step3：修改配置文件
 
-####修改前
+#### 修改前
 
 	<Host name="localhost"  appBase="webapps"  unpackWARs="true" autoDeploy="true">
 
-####修改后 (自定义网站根目录)
+#### 修改后 (自定义网站根目录)
 	<Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true">
 	<Context path="" docBase="/web" debug="0"/>
 >注意：docBase指定网站根目录。
 
  
 
-####step4：启动tomcat服务
+#### step4：启动tomcat服务
 
 	[root@localhost tomcat]# mkdir /web
 	[root@localhost tomcat]# tomcat-up
@@ -283,14 +283,14 @@
 >注意：如果自定义了网站根目录，必须该目录是存在的，如果不存在tomcat是无法启动正常的。
 
  
-##测试篇
+## 测试篇
 >注意：测试很简单，不需要创建文件，测试不存在的页面文件即可知道
 
 >思路：提交html页面是否是nginx处理，提交jsp页面是否是tomcat处理
 
  
 
-####step1：测试html静态页面
+#### step1：测试html静态页面
 
 	[root@localhost ~]# curl http://www.eycode.com/test.html
 	<html>
@@ -305,7 +305,7 @@
 
  
 
-####step2：测试jsp动态页面
+#### tep2：测试jsp动态页面
 
 	[root@localhost ~]# curl http://www.eycode.com/test.jsp
 	<!DOCTYPE html>
