@@ -42,3 +42,8 @@
 
 
 #### 参考文档：无。
+
+
+> 注意： 需要添加计划任务
+
+	20 * * * * /home/openvpn-2.0.9/backup/chkmysql.sh
